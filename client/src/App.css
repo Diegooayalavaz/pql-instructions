@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+
+.btn-primary {
+  background: linear-gradient(90deg, rgba(27,36,35,0) 0%, rgba(27,36,35,1) 33%, rgba(27,36,35,1) 66%, rgba(27,36,35,0) 100%);
+  color: #ffffff;
+  border-color: #6c6d5f;
+  text-transform: capitalize; 
+}
+
+input, textarea {
+  background-color: #1c1e2880 !important;
+  color: white !important;
+}
+
+body{
+  font-family: "Sofia Sans", sans-serif;
+}
+
+h1,h2,h3,h4,h5,button{
+  font-family: "Spectral", serif !important;
+}
