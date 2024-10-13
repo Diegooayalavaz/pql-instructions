@@ -8,10 +8,15 @@ import Slider from "react-slick";
 import userDefault from "../../assets/images/user-default.webp";
 import shieldImage from "../../assets/images/shield.webp";
 
+import ChaserPicture from "../../assets/images/chaser.webp";
+import KeeperPicture from "../../assets/images/keeper.webp";
+import SeekerPicture from "../../assets/images/seeker.webp";
+import BeaterPicture from "../../assets/images/beater.webp";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const Seleccion = ({ team, handleAddingPlayer, handleSubmit }) => {
+const Seleccion = ({ team, handleAddingPlayer, handleSubmit, getTeamLogo }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [animationClass, setAnimationClass] = useState("");
   const [show, setShow] = useState(false);
@@ -86,93 +91,112 @@ const Seleccion = ({ team, handleAddingPlayer, handleSubmit }) => {
     ],
   };
 
+  const getPicturePlayer = (position) => {
+    switch (position) {
+      case "Chaser":
+        return ChaserPicture;
+      case "Keeper":
+        return KeeperPicture;
+      case "Seeker":
+        return SeekerPicture;
+      case "Beater":
+        return BeaterPicture;
+      default:
+        return userDefault;
+    }
+  };
+
   return (
     <>
       <main className="main-content mt-0 ps body-fade text-white">
-        <div className="container mt-5">
-          {isVisible && (
-            <div
-              className={`text-center create-team-animation ${animationClass}`}
-            >
-              <h1>Es hora de crear tu equipo</h1>
-              <button className="btn btn-primary" onClick={handleClickIniciar}>
-                Iniciar
-              </button>
-            </div>
-          )}
-
-          <div className={`${isVisible ? "d-none" : ""}`}>
-            <div className="row">
-              <div className="col col-3 text-center">
-                <img src={shieldImage} alt="" height={100} width={100} />
+        <div className="container mt-0">
+          <div className={``}>
+            <div className="card card-details">
+              <div className="card-body">
+                <div className="row">
+                  <div className="col col-3 text-center my-auto">
+                    <img
+                      src={getTeamLogo(team.name)}
+                      alt=""
+                      height={100}
+                      width={100}
+                    />
+                  </div>
+                  <div className="col col-9">
+                    <h1>{team.name}</h1>
+                    <p>{team.slogan}</p>
+                  </div>
+                </div>
+                <div className="text-center">
+                  <h5>
+                    <i className="fa fa-users me-2"></i>{" "}
+                    {team && team.players ? team.players.length : 0} / 7
+                    jugadores{" "}
+                  </h5>
+                </div>
               </div>
-              <div className="col col-9">
-                <h2>{team.name}</h2>
-                <p>{team.slogan}</p>
-              </div>
             </div>
-
-            <div className="text-center">
-              <h4>{team.players.length} / 7 jugadores</h4>
-            </div>
-
-            <div className="mt-4">
-              <div className="row slider-container">
-                <Slider {...settings}>
-                  {players.map((player) => (
-                    <div className="col" key={player.id}>
-                      <div
-                        className="card me-0 express-card"
-                        onClick={() => handleShow(player)}
-                      >
-                        <div className="card-body text-center">
-                          <img
-                            src={userDefault}
-                            alt=""
-                            height={100}
-                            width={100}
-                            className="mx-auto rounded"
-                          />
-                          <p className="mb-0">{player.name}</p>
-                          <p className="mb-0">{player.age}</p>
-                          <p className="mb-0">{player.position}</p>
+            <div className="card card-details mt-4 pb-4">
+              <div className="card-body">
+                <div className="mt-4">
+                  <div className="row slider-container">
+                    <Slider {...settings}>
+                      {players.map((player) => (
+                        <div className="col" key={player.id}>
+                          <div
+                            className="card me-0 express-card"
+                            onClick={() => handleShow(player)}
+                          >
+                            <div className="card-body text-center">
+                              <img
+                                src={getPicturePlayer(player.position)}
+                                alt=""
+                                height={100}
+                                width={100}
+                                className="mx-auto rounded"
+                              />
+                              <h4 className="mb-0">{player.name}</h4>
+                              <p className="mb-0">{player.age} years</p>
+                              <p className="mb-0 fw-bold">{player.position}</p>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  ))}
-                </Slider>
+                      ))}
+                    </Slider>
+                  </div>
+                </div>
               </div>
-              <div className="text-center mt-5">
-                <button className="btn btn-primary" onClick={handleSubmit}>
-                  Crear equipo
-                </button>
-              </div>
+            </div>
+            <div className="text-center my-4">
+              <button
+                className="btn btn-primary text-uppercase"
+                onClick={handleSubmit}
+              >
+                Crear equipo
+              </button>
             </div>
           </div>
 
-          <Modal show={show} onHide={handleClose}>
+          <Modal show={show} onHide={handleClose} size="sm">
             <Modal.Header closeButton className="border-0"></Modal.Header>
-            <Modal.Body>
-              <div className="row">
-                <div className="col col-3">
-                  <img
-                    src={userDefault}
-                    alt=""
-                    height={100}
-                    width={100}
-                    className="mx-auto rounded"
-                  />
-                </div>
-                <div className="col col-9">
-                  <h4 class="card-title">{selectedPlayer.name}</h4>
-                  <p class="card-text mb-0">{selectedPlayer.age} años</p>
-                  <p class="card-text">{selectedPlayer.position}</p>
-                </div>
+            <Modal.Body className="pt-0">
+              <div className="text-center">
+                <img
+                  src={getPicturePlayer(selectedPlayer.position)}
+                  alt=""
+                  height={200}
+                  width={200}
+                  className="mx-auto rounded"
+                />
+                <h4 class="card-title">{selectedPlayer.name}</h4>
+                <p class="card-text mb-0">{selectedPlayer.age} años</p>
+                <p className="mb-0 fw-bold">{selectedPlayer.position}</p>
               </div>
-              <Modal.Footer className=" border-0 mb-0 pb-0">
+              <Modal.Footer className=" border-0 mb-0 pb-0 text-center">
                 <Button
                   variant="primary"
-                  onClick={() => handleAddingPlayer(selectedPlayer)}
+                  className="text-center mx-auto text-uppercase"
+                  onClick={() => handleClose(selectedPlayer)}
                 >
                   Agregar jugador
                 </Button>

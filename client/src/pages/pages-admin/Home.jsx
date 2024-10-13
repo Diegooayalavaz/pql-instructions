@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import imageLayout from "../../assets/images/school-background.png";
-import GryffindorLogo from "../../assets/images/Gryffindor.png";
+import GryffindorLogo from "../../assets/images/Gryffindor.webp";
+import HufflepuffLogo from "../../assets/images/Hufflepuff.webp";
+import RavenclawLogo from "../../assets/images/Ravenclaw.webp";
+import SlytherinLogo from "../../assets/images/Slytherin.webp";
 
 import shieldImage from "../../assets/images/shield.webp";
+
 import Logo from "../../assets/images/pql_logo.png";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -27,6 +31,21 @@ const Home = () => {
         console.error(err);
       });
   }, []);
+
+  const getTeamLogo = (teamName) => {
+    switch (teamName) {
+      case "Gryffindor":
+        return GryffindorLogo;
+      case "Hufflepuff":
+        return HufflepuffLogo;
+      case "Ravenclaw":
+        return RavenclawLogo;
+      case "Slytherin":
+        return SlytherinLogo;
+      default:
+        return shieldImage; // Default logo if the team name doesn't match
+    }
+  };
 
   return (
     <>
@@ -55,22 +74,24 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <h1 className="text-center mb-4">Selecciona el equipo</h1>
+            <h1 className="text-center mb-4 text-shadow">
+              Selecciona el equipo
+            </h1>
             <div className="row">
               {teams.map((team) => (
                 <div key={team.id} className="col col-4">
                   <Link to={`./equipo/${team.id}`}>
                     <div
-                      className="card bg-dark text-center p-3 text-white"
+                      className="card text-center p-3 text-white card-house m-3"
                       style={{ height: "250px" }}
                     >
                       <img
-                        src={GryffindorLogo}
+                        src={getTeamLogo(team.name)} // Get the correct logo for the team
                         alt=""
                         width={150}
                         className="text-center mx-auto"
                       />
-                      <h3>{team.name}</h3>
+                      <h3 className="text-shadow">{team.name}</h3>
                     </div>
                   </Link>
                 </div>
@@ -78,13 +99,13 @@ const Home = () => {
               <div className="col col-4">
                 <Link to="./nuevo-equipo">
                   <div
-                    className="card bg-dark text-center p-3 text-white"
+                    className="card text-center p-3 text-white card-house m-3"
                     style={{ height: "250px" }}
                   >
                     <p className="mt-5 mb-0" style={{ fontSize: "48px" }}>
                       <i className="fas fa-plus text-center"></i>
                     </p>
-                    <h3 className="mt-auto">Crear equipo</h3>
+                    <h3 className="mt-auto text-shadow">Crear equipo</h3>
                   </div>
                 </Link>
               </div>

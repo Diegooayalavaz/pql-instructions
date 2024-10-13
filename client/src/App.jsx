@@ -10,6 +10,9 @@ import Equipo from "./pages/pages-admin/Equipo";
 
 import "./App.css";
 import NuevoEquipo from "./pages/pages-admin/NuevoEquipo";
+import ForgotPassword from "./pages/pages-common/ForgotPassword";
+import SignUp from "./pages/pages-common/SignUp";
+import EditarEquipo from "./pages/pages-admin/EditarEquipo";
 
 const App = () => {
   const location = useLocation();
@@ -17,9 +20,12 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" index element={<Login />} />
+      <Route path="/ForgotPassword" element={<ForgotPassword />} />
+      <Route path="/SignUp" element={<SignUp />} />
       <Route path="/seleccion" element={<Seleccion />} />
       <Route path="/equipo/:id" element={<Equipo />} />
       <Route path="/nuevo-equipo" element={<NuevoEquipo />} />
+      <Route path="/editar-equipo/:id" element={<EditarEquipo />} />
 
       <Route path="*" element={<Error404 />} />
     </Routes>

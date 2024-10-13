@@ -7,8 +7,38 @@
     },
     {
       "id": 2,
-      "name": "SLIDERIN",
+      "name": "Slytherin",
       "slogan": "ES UNA CASA DE PASADOS"
+    },
+    {
+      "id": 3,
+      "name": "fasdfasdf",
+      "slogan": "asdfasdf"
+    },
+    {
+      "id": 4,
+      "name": "asdfasdfas",
+      "slogan": "asdfasdf"
+    },
+    {
+      "id": 5,
+      "name": "dfasdf",
+      "slogan": "asdfas"
+    },
+    {
+      "id": 6,
+      "name": "asdf",
+      "slogan": "asdfasd"
+    },
+    {
+      "id": 7,
+      "name": "DEBBIE",
+      "slogan": "DEBBS"
+    },
+    {
+      "id": 8,
+      "name": "Ravenclaw",
+      "slogan": "asdfasdfasdfasdfasdfasdfasdf"
     }
   ],
   "players": [
@@ -38,21 +68,21 @@
       "name": "Draco Malfoy",
       "age": 11,
       "position": "Chaser",
-      "team_id": 2
+      "team_id": null
     },
     {
       "id": 5,
       "name": "Cedric Diggory",
       "age": 17,
       "position": "Seeker",
-      "team_id": 2
+      "team_id": null
     },
     {
       "id": 6,
       "name": "Cho Chang",
       "age": 16,
       "position": "Chaser",
-      "team_id": 2
+      "team_id": null
     },
     {
       "id": 7,
@@ -73,7 +103,7 @@
       "name": "Neville Longbottom",
       "age": 11,
       "position": "Keeper",
-      "team_id": null
+      "team_id": 3
     },
     {
       "id": 10,
@@ -87,7 +117,7 @@
       "name": "George Weasley",
       "age": 13,
       "position": "Beater",
-      "team_id": null
+      "team_id": 7
     },
     {
       "id": 12,
@@ -101,35 +131,35 @@
       "name": "Angelina Johnson",
       "age": 16,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 4
     },
     {
       "id": 14,
       "name": "Katie Bell",
       "age": 16,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 5
     },
     {
       "id": 15,
       "name": "Alicia Spinnet",
       "age": 16,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 7
     },
     {
       "id": 16,
       "name": "Marcus Flint",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 6
     },
     {
       "id": 17,
       "name": "Adrian Pucey",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 7
     },
     {
       "id": 18,
@@ -150,14 +180,14 @@
       "name": "Harper",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 7
     },
     {
       "id": 21,
       "name": "Urquhart",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 7
     },
     {
       "id": 22,
@@ -171,7 +201,7 @@
       "name": "Derrick",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 7
     },
     {
       "id": 24,
@@ -185,14 +215,10 @@
       "name": "Pucey",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 7
     },
     {
-      "id": 26,
-      "name": "Warrington",
-      "age": 17,
-      "position": "Chaser",
-      "team_id": null
+      "id": 26
     },
     {
       "id": 27,

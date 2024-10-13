@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import imageLayout from "../../assets/images/school-background.png";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -6,7 +6,7 @@ import DetallesEquipo from "./DetallesEquipo";
 import Seleccion from "./Seleccion";
 import Swal from "sweetalert2";
 import Axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import GryffindorLogo from "../../assets/images/Gryffindor.webp";
 import HufflepuffLogo from "../../assets/images/Hufflepuff.webp";
@@ -14,7 +14,8 @@ import RavenclawLogo from "../../assets/images/Ravenclaw.webp";
 import SlytherinLogo from "../../assets/images/Slytherin.webp";
 import shieldImage from "../../assets/images/shield.webp";
 
-const NuevoEquipo = () => {
+const EditarEquipo = () => {
+  const { id } = useParams();
   const [team, setTeam] = useState({
     name: "",
     slogan: "",
@@ -22,6 +23,19 @@ const NuevoEquipo = () => {
   });
   const [show, setShow] = useState(true);
   const navigate = useNavigate();
+
+  useEffect(async () => {
+    if (id) {
+      try {
+        const response = await Axios.get(
+          `${process.env.REACT_APP_API_BASE_URL}api/teams/${id}`
+        );
+        setTeam(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }, []);
 
   const handleSubmit = async () => {
     try {
@@ -131,4 +145,4 @@ const NuevoEquipo = () => {
   );
 };
 
-export default NuevoEquipo;
+export default EditarEquipo;

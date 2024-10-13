@@ -4,7 +4,7 @@ import imageLayout from "../../assets/images/school-background.png";
 import Logo from "../../assets/images/pql_logo.png";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const ForgotPassword = () => {
   return (
     <>
       <main className="main-content mt-0 ps body-fade">
@@ -42,33 +42,21 @@ const Login = () => {
                           "linear-gradient(90deg, rgba(27,36,35,0) 0%, rgba(27,36,35,1) 33%, rgba(27,36,35,1) 66%, rgba(27,36,35,0) 100%)",
                       }}
                     >
-                      <h5>Iniciar sesión </h5>
+                      <h5>Recuperar contraseña</h5>
                     </div>
 
                     <div className="card-body">
+                      <p>
+                        Escribe el nombre de tu Lechuza, para restablecer tu
+                        contraseña
+                      </p>
                       <form>
                         <div className="mb-3">
                           <input
                             type="text"
                             className="form-control"
-                            placeholder="Usuario"
+                            placeholder="Nombre de lechuza"
                           />
-                        </div>
-                        <div className="">
-                          <input
-                            type="password"
-                            className="form-control"
-                            placeholder="Contraseña"
-                            aria-label="Password"
-                          />
-                        </div>
-                        <div className="mt-3 mb-0">
-                          <Link
-                            to="../ForgotPassword"
-                            className="text-white font-weight-bolder my-5 mb-0 text-sm"
-                          >
-                            Olvidé mi contraseña
-                          </Link>
                         </div>
                         <div className="text-center mt-2">
                           <Link to="../">
@@ -77,17 +65,16 @@ const Login = () => {
                               className="btn btn-primary w-100 my-2 mb-2 text-uppercase"
                               style={{ borderColor: "#514e37" }}
                             >
-                              Iniciar sesión
+                              Restablecer contraseña
                             </button>
                           </Link>
                         </div>
                         <p className="text-sm mt-3 mb-0">
-                          ¿No tienes una cuenta?{" "}
                           <Link
-                            to="../SignUp"
+                            to="../login"
                             className="text-white font-weight-bolder"
                           >
-                            Registrate
+                            Regresar al inicio
                           </Link>
                         </p>
                       </form>
@@ -103,4 +90,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;
