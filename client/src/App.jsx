@@ -9,6 +9,7 @@ import Seleccion from "./pages/pages-admin/Seleccion";
 import Equipo from "./pages/pages-admin/Equipo";
 
 import "./App.css";
+import NuevoEquipo from "./pages/pages-admin/NuevoEquipo";
 
 const App = () => {
   const location = useLocation();
@@ -17,7 +18,8 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/login" index element={<Login />} />
       <Route path="/seleccion" element={<Seleccion />} />
-      <Route path="/equipo" element={<Equipo />} />
+      <Route path="/equipo/:id" element={<Equipo />} />
+      <Route path="/nuevo-equipo" element={<NuevoEquipo />} />
 
       <Route path="*" element={<Error404 />} />
     </Routes>

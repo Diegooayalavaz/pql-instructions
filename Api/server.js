@@ -19,6 +19,20 @@ server.get('/api/players/available/', (req, res) => {
   res.jsonp(availablePlayers);
 });
 
+// Return all players assigned to a specific team by teamId
+server.get('/api/teams/:teamId/players', (req, res) => {
+  const teamId = parseInt(req.params.teamId, 10); // Convert teamId from string to number
+
+  // Get all players
+  const players = router.db.get('players').value();
+
+  // Filter players by team_id
+  const teamPlayers = players.filter(player => player.team_id === teamId);
+
+  // Return the players that are assigned to the specific team
+  res.jsonp(teamPlayers);
+});
+
 
 /**
  * Customize POST /api/teams so after creating a team, the team_id is added to the players
@@ -54,17 +68,17 @@ server.post('/api/teams', (req, res) => {
     console.log("Creating team...");
     // Create team
     const team = router.db.get('teams').insert({ id: teamId, ...body }).write();
-    if(!team) throw new Error('Error creating team');
+    if (!team) throw new Error('Error creating team');
 
     console.log("Updating players...");
-    if(!players || players.length === 0) throw new Error('Players are required');
+    if (!players || players.length === 0) throw new Error('Players are required');
     players.forEach(id => {
       // Get player
       const player = router.db.get('players').find({ id }).value();
-      if(!player) throw new Error(`Player with id ${id} not found`);
+      if (!player) throw new Error(`Player with id ${id} not found`);
 
       // Check if player is already in a team
-      if(player.team_id) throw new Error(`Player with id ${id} is already in a team`);
+      if (player.team_id) throw new Error(`Player with id ${id} is already in a team`);
 
       // Update player
       router.db.get('players').find({ id }).assign({ team_id: teamId }).write();

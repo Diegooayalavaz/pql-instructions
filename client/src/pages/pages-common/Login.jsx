@@ -1,6 +1,7 @@
 import React from "react";
-import imageLayout from "../../assets/images/background-login.png";
-import back from "../../assets/images/background.png";
+
+import imageLayout from "../../assets/images/school-background.png";
+import Logo from "../../assets/images/pql_logo.png";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -12,6 +13,9 @@ const Login = () => {
           style={{
             backgroundImage: `url(${imageLayout})`,
             backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundAttachment: "fixed",
           }}
         >
           <span className="mask bg-gradient-dark opacity-6"></span>
@@ -19,6 +23,9 @@ const Login = () => {
             <div className="container mt-2 mb-5">
               <div className="row mt-lg-n11 mt-md-n11 mt-n11 justify-content-center">
                 <div className="col-xl-4 col-lg-5 col-md-7 mx-auto">
+                  <div className="text-center">
+                    <img src={Logo} alt="Logo" className="img-fluid mb-3" />
+                  </div>
                   <div
                     className="card z-index-0 text-white "
                     style={{
