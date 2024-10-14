@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Slider from "react-slick"; // Importing slider for displaying players
 
 import userDefault from "../../assets/images/user-default.webp"; // Default image for players
-import shieldImage from "../../assets/images/shield.webp"; // Default shield image
 
 // Player position images
 import ChaserPicture from "../../assets/images/chaser.webp";

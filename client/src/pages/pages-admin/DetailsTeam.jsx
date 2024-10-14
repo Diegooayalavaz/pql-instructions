@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const DetailsTeam = ({ handleChange, handleStart, team, getTeamLogo }) => {
   // Define the available houses

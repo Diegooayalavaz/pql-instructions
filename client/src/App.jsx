@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js"; // This includes Popper.js
 
@@ -16,7 +16,6 @@ import SignUp from "./pages/pages-common/SignUp";
 import EditTeam from "./pages/pages-admin/EditTeam";
 
 const App = () => {
-  const location = useLocation();
   return (
     <Routes>
       <Route path="/" element={<Home />} />

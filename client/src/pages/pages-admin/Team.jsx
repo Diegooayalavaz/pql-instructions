@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Swal from "sweetalert2";
@@ -97,11 +97,6 @@ const Team = () => {
   const handleChange = (event, name) => {
     const { value } = event.target;
     setTeam({ ...team, [name]: value });
-  };
-
-  // Function to handle button click for changing team name to a house name
-  const handleHouseButton = (nameHouse) => {
-    handleChange({ target: { value: nameHouse } }, "name");
   };
 
   // Function to handle deleting a player from the team
@@ -263,7 +258,7 @@ const Team = () => {
   const PlayerRow = ({ player, index, handleDeletePlayer }) => {
     return (
       <tr>
-        <td scope="row" className="">
+        <td className="">
           <p className="text-center mt-3 mb-0">{index + 1}</p>
         </td>
         <td>
@@ -275,7 +270,7 @@ const Team = () => {
             width={50}
           />
         </td>
-        <td scope="row">
+        <td>
           <h4 className="mb-0">{player.name}</h4>
           <p className="mb-0 text-warning">{player.position}</p>
         </td>

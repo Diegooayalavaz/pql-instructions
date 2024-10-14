@@ -5,7 +5,9 @@
       "name": "Gryffindor",
       "slogan": "Where dwell the brave at heart",
       "players": [
-        10
+        10,
+        8,
+        11
       ]
     },
     {
@@ -13,7 +15,8 @@
       "name": "Ravenclaw",
       "slogan": "Ravenclaw house",
       "players": [
-        8
+        8,
+        4
       ]
     },
     {
@@ -58,7 +61,8 @@
       "name": "Draco Malfoy",
       "age": 11,
       "position": "Chaser",
-      "team_id": 2
+      "team_id": 2,
+      "ability": "chaser_accuracy"
     },
     {
       "id": 5,
@@ -87,7 +91,8 @@
       "name": "Ginny Weasley",
       "age": 14,
       "position": "Chaser",
-      "team_id": 5
+      "team_id": 1,
+      "ability": "chaser_accuracy"
     },
     {
       "id": 9,
@@ -110,7 +115,8 @@
       "name": "George Weasley",
       "age": 13,
       "position": "Beater",
-      "team_id": null
+      "team_id": 1,
+      "ability": "beater_reflexes"
     },
     {
       "id": 12,

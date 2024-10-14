@@ -27,10 +27,7 @@ const NewTeam = () => {
   // Function to handle team registration
   const handleSubmit = async () => {
     try {
-      const response = await Axios.post(
-        `${process.env.REACT_APP_API_BASE_URL}api/teams/`,
-        team
-      )
+      await Axios.post(`${process.env.REACT_APP_API_BASE_URL}api/teams/`, team)
         .then((response) => {
           Swal.fire(
             "!Success!",

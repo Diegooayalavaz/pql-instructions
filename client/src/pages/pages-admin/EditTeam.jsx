@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import imageLayout from "../../assets/images/school-background.png";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import DetailsTeam from "./DetailsTeam";
 import Seleccion from "./Selection";
 import Swal from "sweetalert2";
 import Axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import GryffindorLogo from "../../assets/images/Gryffindor.webp";
 import HufflepuffLogo from "../../assets/images/Hufflepuff.webp";
@@ -21,7 +20,6 @@ const EditTeam = () => {
     slogan: "",
     players: [],
   });
-  const [show, setShow] = useState(true); // Control visibility of the team details
   const navigate = useNavigate();
   const [tmpPlayers, setTmpPlayers] = useState([]); // Temporary array to hold players for batch update
 

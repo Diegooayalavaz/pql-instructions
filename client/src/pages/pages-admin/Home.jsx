@@ -20,18 +20,23 @@ const Home = () => {
   // Fetch the list of teams from the API on component mount
   Axios.defaults.withCredentials = true;
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_API_BASE_URL}api/teams`)
-      .then((res) => {
-        if (res) {
+    const fetchTeams = async () => {
+      try {
+        const res = await Axios.get(
+          `${process.env.REACT_APP_API_BASE_URL}api/teams`
+        );
+        if (res && res.data) {
           console.log(res.data);
           setTeams(res.data);
         } else {
-          console.log("No response from server");
+          console.log("No response from server or empty data");
         }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+      } catch (err) {
+        console.error("Error fetching teams:", err);
+      }
+    };
+
+    fetchTeams();
   }, []);
 
   // Function to get the appropriate logo for a team based on its name
@@ -60,7 +65,7 @@ const Home = () => {
         >
           <img
             src={getTeamLogo(team.name)}
-            alt=""
+            alt={team.name}
             width={150}
             className="text-center mx-auto"
           />
