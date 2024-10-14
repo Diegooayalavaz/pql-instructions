@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Logo from "../assets/images/pql_logo.png";
 import userDefault from "../assets/images/user-default.webp";
 
@@ -29,17 +30,17 @@ const Header = () => {
             />{" "}
             <p className="my-auto ms-2 text-white">Diego Ayala</p>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
+          <div className="collapse navbar-collapse text-end" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
+                <Link aria-current="page" to="/" className="nav-link active">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/teams">
-                  Teams
-                </a>
+                <Link aria-current="page" to="/login" className="nav-link">
+                  Logout
+                </Link>
               </li>
             </ul>
           </div>

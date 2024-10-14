@@ -3,42 +3,32 @@
     {
       "id": 1,
       "name": "Gryffindor",
-      "slogan": "Where dwell the brave at heart"
+      "slogan": "Where dwell the brave at heart",
+      "players": [
+        10
+      ]
     },
     {
       "id": 2,
-      "name": "Slytherin",
-      "slogan": "ES UNA CASA DE PASADOS"
+      "name": "Ravenclaw",
+      "slogan": "Ravenclaw house",
+      "players": [
+        8
+      ]
     },
     {
       "id": 3,
-      "name": "fasdfasdf",
-      "slogan": "asdfasdf"
-    },
-    {
-      "id": 4,
-      "name": "asdfasdfas",
-      "slogan": "asdfasdf"
+      "name": "Slytherin",
+      "slogan": ""
     },
     {
       "id": 5,
-      "name": "dfasdf",
-      "slogan": "asdfas"
-    },
-    {
-      "id": 6,
-      "name": "asdf",
-      "slogan": "asdfasd"
-    },
-    {
-      "id": 7,
-      "name": "DEBBIE",
-      "slogan": "DEBBS"
-    },
-    {
-      "id": 8,
-      "name": "Ravenclaw",
-      "slogan": "asdfasdfasdfasdfasdfasdfasdf"
+      "name": "Hufflepuff",
+      "slogan": "",
+      "players": [
+        7,
+        9
+      ]
     }
   ],
   "players": [
@@ -68,7 +58,7 @@
       "name": "Draco Malfoy",
       "age": 11,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 5,
@@ -82,84 +72,87 @@
       "name": "Cho Chang",
       "age": 16,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 3
     },
     {
       "id": 7,
       "name": "Luna Lovegood",
       "age": 14,
       "position": "Chaser",
-      "team_id": 2
+      "team_id": 5,
+      "ability": "chaser_accuracy"
     },
     {
       "id": 8,
       "name": "Ginny Weasley",
       "age": 14,
       "position": "Chaser",
-      "team_id": 2
+      "team_id": 5
     },
     {
       "id": 9,
       "name": "Neville Longbottom",
       "age": 11,
       "position": "Keeper",
-      "team_id": 3
+      "team_id": 5,
+      "ability": "keeper_saves"
     },
     {
       "id": 10,
       "name": "Fred Weasley",
       "age": 13,
       "position": "Beater",
-      "team_id": 2
+      "team_id": 1,
+      "ability": "beater_reflexes"
     },
     {
       "id": 11,
       "name": "George Weasley",
       "age": 13,
       "position": "Beater",
-      "team_id": 7
+      "team_id": null
     },
     {
       "id": 12,
       "name": "Oliver Wood",
       "age": 17,
       "position": "Keeper",
-      "team_id": 2
+      "team_id": null
     },
     {
       "id": 13,
       "name": "Angelina Johnson",
       "age": 16,
       "position": "Chaser",
-      "team_id": 4
+      "team_id": null
     },
     {
       "id": 14,
       "name": "Katie Bell",
       "age": 16,
       "position": "Chaser",
-      "team_id": 5
+      "team_id": null
     },
     {
       "id": 15,
       "name": "Alicia Spinnet",
       "age": 16,
       "position": "Chaser",
-      "team_id": 7
+      "team_id": null
     },
     {
       "id": 16,
       "name": "Marcus Flint",
       "age": 17,
       "position": "Chaser",
-      "team_id": 6
+      "team_id": null
     },
     {
       "id": 17,
       "name": "Adrian Pucey",
       "age": 17,
       "position": "Chaser",
-      "team_id": 7
+      "team_id": null
     },
     {
       "id": 18,
@@ -180,14 +173,14 @@
       "name": "Harper",
       "age": 17,
       "position": "Chaser",
-      "team_id": 7
+      "team_id": null
     },
     {
       "id": 21,
       "name": "Urquhart",
       "age": 17,
       "position": "Chaser",
-      "team_id": 7
+      "team_id": null
     },
     {
       "id": 22,
@@ -201,7 +194,7 @@
       "name": "Derrick",
       "age": 17,
       "position": "Chaser",
-      "team_id": 7
+      "team_id": null
     },
     {
       "id": 24,
@@ -215,10 +208,14 @@
       "name": "Pucey",
       "age": 17,
       "position": "Chaser",
-      "team_id": 7
+      "team_id": null
     },
     {
-      "id": 26
+      "id": 26,
+      "name": "Warrington",
+      "age": 17,
+      "position": "Chaser",
+      "team_id": null
     },
     {
       "id": 27,

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Person404 from "../../assets/images/404.png";
-import "../../assets/styles/page404.css"; // Importa tu CSS aquí
+import "../../assets/styles/page404.css";
 
 const Error404 = () => {
   return (
@@ -12,11 +12,11 @@ const Error404 = () => {
         alt="Showing existing error 404"
       ></img>
       <h1>Error 404</h1>
-      <p>Página no encontrada.</p>
-      <p>Lo sentimos, la página que estás buscando no existe.</p>
+      <p>Page not found</p>
+      <p>Sorry, the page that you're looking for does not exist.</p>
       <ul>
         <li>
-          <Link to="../">Ir a la página principal</Link>
+          <Link to="../">Go Home</Link>
         </li>
       </ul>
     </div>

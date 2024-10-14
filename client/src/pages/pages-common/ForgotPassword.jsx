@@ -42,20 +42,19 @@ const ForgotPassword = () => {
                           "linear-gradient(90deg, rgba(27,36,35,0) 0%, rgba(27,36,35,1) 33%, rgba(27,36,35,1) 66%, rgba(27,36,35,0) 100%)",
                       }}
                     >
-                      <h5>Recuperar contraseña</h5>
+                      <h5>Recover Password</h5>
                     </div>
 
                     <div className="card-body">
                       <p>
-                        Escribe el nombre de tu Lechuza, para restablecer tu
-                        contraseña
+                        Write the name of your owl to reestablish your password
                       </p>
                       <form>
                         <div className="mb-3">
                           <input
                             type="text"
                             className="form-control"
-                            placeholder="Nombre de lechuza"
+                            placeholder="Owl Name"
                           />
                         </div>
                         <div className="text-center mt-2">
@@ -65,7 +64,7 @@ const ForgotPassword = () => {
                               className="btn btn-primary w-100 my-2 mb-2 text-uppercase"
                               style={{ borderColor: "#514e37" }}
                             >
-                              Restablecer contraseña
+                              Reestablish password
                             </button>
                           </Link>
                         </div>
@@ -74,7 +73,7 @@ const ForgotPassword = () => {
                             to="../login"
                             className="text-white font-weight-bolder"
                           >
-                            Regresar al inicio
+                            Back to Login
                           </Link>
                         </p>
                       </form>

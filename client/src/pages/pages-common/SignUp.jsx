@@ -42,31 +42,31 @@ const SignUp = () => {
                           "linear-gradient(90deg, rgba(27,36,35,0) 0%, rgba(27,36,35,1) 33%, rgba(27,36,35,1) 66%, rgba(27,36,35,0) 100%)",
                       }}
                     >
-                      <h5>Registrarse</h5>
+                      <h5>Sign up</h5>
                     </div>
 
                     <div className="card-body">
-                      <p>¡Bienvenido! Favor de llenar los siguientes campos</p>
+                      <p>¡Welcome! Please, complete the form</p>
                       <form>
                         <div className="mb-3">
                           <input
                             type="text"
                             className="form-control"
-                            placeholder="Nombre"
+                            placeholder="Name"
                           />
                         </div>
                         <div className="mb-3">
                           <input
                             type="password"
                             className="form-control"
-                            placeholder="Contraseña"
+                            placeholder="Password"
                           />
                         </div>
                         <div className="mb-3">
                           <input
                             type="password"
                             className="form-control"
-                            placeholder="Repite contraseña"
+                            placeholder="Repeat Password"
                           />
                         </div>
                         <div className="text-center mt-2">
@@ -76,7 +76,7 @@ const SignUp = () => {
                               className="btn btn-primary w-100 my-2 mb-2 text-uppercase"
                               style={{ borderColor: "#514e37" }}
                             >
-                              Crear cuenta
+                              Create account
                             </button>
                           </Link>
                         </div>
@@ -85,7 +85,7 @@ const SignUp = () => {
                             to="../login"
                             className="text-white font-weight-bolder"
                           >
-                            Regresar al inicio
+                            Back to Login
                           </Link>
                         </p>
                       </form>

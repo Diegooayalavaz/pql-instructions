@@ -42,7 +42,7 @@ const Login = () => {
                           "linear-gradient(90deg, rgba(27,36,35,0) 0%, rgba(27,36,35,1) 33%, rgba(27,36,35,1) 66%, rgba(27,36,35,0) 100%)",
                       }}
                     >
-                      <h5>Iniciar sesión </h5>
+                      <h5>Login</h5>
                     </div>
 
                     <div className="card-body">
@@ -51,14 +51,14 @@ const Login = () => {
                           <input
                             type="text"
                             className="form-control"
-                            placeholder="Usuario"
+                            placeholder="Username"
                           />
                         </div>
                         <div className="">
                           <input
                             type="password"
                             className="form-control"
-                            placeholder="Contraseña"
+                            placeholder="Password"
                             aria-label="Password"
                           />
                         </div>
@@ -67,7 +67,7 @@ const Login = () => {
                             to="../ForgotPassword"
                             className="text-white font-weight-bolder my-5 mb-0 text-sm"
                           >
-                            Olvidé mi contraseña
+                            Forgot password?
                           </Link>
                         </div>
                         <div className="text-center mt-2">
@@ -77,17 +77,17 @@ const Login = () => {
                               className="btn btn-primary w-100 my-2 mb-2 text-uppercase"
                               style={{ borderColor: "#514e37" }}
                             >
-                              Iniciar sesión
+                              Enter
                             </button>
                           </Link>
                         </div>
                         <p className="text-sm mt-3 mb-0">
-                          ¿No tienes una cuenta?{" "}
+                          ¿Need an accoutn?{" "}
                           <Link
                             to="../SignUp"
                             className="text-white font-weight-bolder"
                           >
-                            Registrate
+                            SIGN UP
                           </Link>
                         </p>
                       </form>

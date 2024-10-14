@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import imageLayout from "../../assets/images/school-background.png";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import DetallesEquipo from "./DetallesEquipo";
-import Seleccion from "./Seleccion";
+import DetailsTeam from "./DetailsTeam";
+import Seleccion from "./Selection";
 import Swal from "sweetalert2";
 import Axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import GryffindorLogo from "../../assets/images/Gryffindor.webp";
 import HufflepuffLogo from "../../assets/images/Hufflepuff.webp";
@@ -14,37 +14,67 @@ import RavenclawLogo from "../../assets/images/Ravenclaw.webp";
 import SlytherinLogo from "../../assets/images/Slytherin.webp";
 import shieldImage from "../../assets/images/shield.webp";
 
-const NuevoEquipo = () => {
+const EditTeam = () => {
+  const { id } = useParams(); // Get team ID from URL parameters
   const [team, setTeam] = useState({
     name: "",
     slogan: "",
     players: [],
   });
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(true); // Control visibility of the team details
   const navigate = useNavigate();
+  const [tmpPlayers, setTmpPlayers] = useState([]); // Temporary array to hold players for batch update
 
+  useEffect(() => {
+    async function fetchTeam() {
+      if (id) {
+        try {
+          const response = await Axios.get(
+            `${process.env.REACT_APP_API_BASE_URL}api/teams/${id}`
+          );
+          console.log(response.data);
+          setTeam(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    }
+
+    fetchTeam();
+  }, [id]);
+
+  // Handle team submission for update
   const handleSubmit = async () => {
     try {
-      const response = await Axios.post(
-        `${process.env.REACT_APP_API_BASE_URL}api/teams/`,
+      const response = await Axios.put(
+        `${process.env.REACT_APP_API_BASE_URL}api/teams/${team.id}`,
         team
       );
-      Swal.fire(
-        "!Éxito!",
-        "El equipo se ha registrado correctamente",
-        "success"
-      );
+
+      console.log(response.data.players);
+      tmpPlayers.forEach((player) => {
+        player.team_id = response.data.id; // Assign updated team ID to each player
+        Axios.put(
+          `${process.env.REACT_APP_API_BASE_URL}api/players/${player.id}`,
+          player // Update player data
+        )
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      });
+      Swal.fire("!Success!", "Team successfully updated", "success");
 
       navigate("../");
     } catch (error) {
       console.error(error);
-      Swal.fire(
-        "Error",
-        "Ha ocurrido un error al registrar el equipo",
-        "error"
-      );
+      Swal.fire("Error", "Error team no updated", "error");
     }
   };
+
+  // Get the appropriate team logo based on the team name
   const getTeamLogo = (teamName) => {
     switch (teamName) {
       case "Gryffindor":
@@ -60,25 +90,23 @@ const NuevoEquipo = () => {
     }
   };
 
-  const handleChange = (event, name) => {
-    const { value } = event.target;
-    setTeam({ ...team, [name]: value });
-  };
-
-  const handleStart = (event, name) => {
-    setShow(false);
-  };
-
+  // Add a player to the team and temporary list
   const handleAddingPlayer = (selectedPlayer) => {
     if (selectedPlayer) {
+      // Ensure team.players is an array (fallback to empty array)
       const updatedTeam = {
         ...team,
-        players: [...team.players, selectedPlayer.id],
+        players: [...(team.players || []), selectedPlayer.id], // Safely spread players
       };
 
-      // Update the state using the new team object
+      // Update the state with the new team object
       setTeam(updatedTeam);
-      Swal.fire("AGREGADO", "El jugador se agregó al equipo", "success");
+
+      // Add new Player to temporary array for batch update later
+      tmpPlayers.push(selectedPlayer);
+
+      // Display success message
+      Swal.fire("Added", "The player was added to the team", "success");
     }
   };
 
@@ -107,21 +135,13 @@ const NuevoEquipo = () => {
             }}
           >
             <div className="container mt-5">
-              {show ? (
-                <DetallesEquipo
-                  handleChange={handleChange}
-                  team={team}
-                  handleStart={handleStart}
-                  getTeamLogo={getTeamLogo}
-                />
-              ) : (
-                <Seleccion
-                  team={team}
-                  handleAddingPlayer={handleAddingPlayer}
-                  handleSubmit={handleSubmit}
-                  getTeamLogo={getTeamLogo}
-                />
-              )}
+              <Seleccion
+                team={team}
+                handleAddingPlayer={handleAddingPlayer}
+                handleSubmit={handleSubmit}
+                getTeamLogo={getTeamLogo}
+                action="update"
+              />
             </div>
           </div>
           <Footer />
@@ -131,4 +151,4 @@ const NuevoEquipo = () => {
   );
 };
 
-export default NuevoEquipo;
+export default EditTeam;

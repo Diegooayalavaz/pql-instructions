@@ -14,8 +14,10 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 const Home = () => {
+  // State to hold the list of teams fetched from the server
   const [teams, setTeams] = useState([]);
 
+  // Fetch the list of teams from the API on component mount
   Axios.defaults.withCredentials = true;
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_BASE_URL}api/teams`)
@@ -32,6 +34,7 @@ const Home = () => {
       });
   }, []);
 
+  // Function to get the appropriate logo for a team based on its name
   const getTeamLogo = (teamName) => {
     switch (teamName) {
       case "Gryffindor":
@@ -46,6 +49,43 @@ const Home = () => {
         return shieldImage; // Default logo if the team name doesn't match
     }
   };
+
+  // Functional component for rendering a team card
+  const TeamCard = ({ team, getTeamLogo }) => (
+    <div className="col col-12 col-md-4">
+      <Link to={`./team/${team.id}`}>
+        <div
+          className="card text-center p-3 text-white card-house m-3"
+          style={{ height: "250px" }}
+        >
+          <img
+            src={getTeamLogo(team.name)}
+            alt=""
+            width={150}
+            className="text-center mx-auto"
+          />
+          <h3 className="text-shadow">{team.name}</h3>
+        </div>
+      </Link>
+    </div>
+  );
+
+  // Functional component for the "Create a team" card
+  const CreateTeamCard = () => (
+    <div className="col col-12 col-md-4">
+      <Link to="./new-team">
+        <div
+          className="card text-center p-3 text-white card-house m-3"
+          style={{ height: "250px" }}
+        >
+          <p className="mt-5 mb-0" style={{ fontSize: "48px" }}>
+            <i className="fas fa-plus text-center"></i>
+          </p>
+          <h3 className="mt-auto text-shadow">Create a team</h3>
+        </div>
+      </Link>
+    </div>
+  );
 
   return (
     <>
@@ -74,41 +114,13 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <h1 className="text-center mb-4 text-shadow">
-              Selecciona el equipo
-            </h1>
+            <h1 className="text-center mb-4 text-shadow">Select a team</h1>
+
             <div className="row">
               {teams.map((team) => (
-                <div key={team.id} className="col col-4">
-                  <Link to={`./equipo/${team.id}`}>
-                    <div
-                      className="card text-center p-3 text-white card-house m-3"
-                      style={{ height: "250px" }}
-                    >
-                      <img
-                        src={getTeamLogo(team.name)} // Get the correct logo for the team
-                        alt=""
-                        width={150}
-                        className="text-center mx-auto"
-                      />
-                      <h3 className="text-shadow">{team.name}</h3>
-                    </div>
-                  </Link>
-                </div>
+                <TeamCard key={team.id} team={team} getTeamLogo={getTeamLogo} />
               ))}
-              <div className="col col-4">
-                <Link to="./nuevo-equipo">
-                  <div
-                    className="card text-center p-3 text-white card-house m-3"
-                    style={{ height: "250px" }}
-                  >
-                    <p className="mt-5 mb-0" style={{ fontSize: "48px" }}>
-                      <i className="fas fa-plus text-center"></i>
-                    </p>
-                    <h3 className="mt-auto text-shadow">Crear equipo</h3>
-                  </div>
-                </Link>
-              </div>
+              <CreateTeamCard />
             </div>
           </div>
         </div>
